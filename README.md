@@ -2,7 +2,7 @@
 
 Repository to test and experiment with d3.js library.
 
-  vgsales.csv file contains data set for video games with sales greater than 100,000 copies. the columns are
+  1. vgsales.csv file contains data set for video games with sales greater than 100,000 copies. the columns are
   (There are 16,598 records. 2 records were dropped due to incomplete information)
 
     Rank - Ranking of overall sales
@@ -17,7 +17,7 @@ Repository to test and experiment with d3.js library.
     Other_Sales - Sales in the rest of the world (in millions)
     Global_Sales - Total worldwide sales
 
-  Pokemon.csv file contains data set for 40 Pokemons and the columns are
+  2. Pokemon.csv file contains data set for 40 Pokemons and the columns are
 
     #: ID for each pokemon
     Name: Name of each pokemon
