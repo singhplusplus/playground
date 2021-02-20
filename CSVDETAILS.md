@@ -1,6 +1,4 @@
-# d3-playground
-
-Repository to test and experiment with d3.js library.
+# CSV FILE'S DETAILS
 
   1. vgsales.csv file contains data set for video games with sales greater than 100,000 copies. the columns are
   (There are 16,598 records. 2 records were dropped due to incomplete information)
