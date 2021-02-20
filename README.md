@@ -30,3 +30,12 @@ Repository to test and experiment with d3.js library.
     SP Atk: special attack, the base modifier for special attacks (e.g. fire blast, bubble beam)
     SP Def: the base damage resistance against special attacks
     Speed: determines which pokemon attacks first each round
+
+  3. Literacy-Data-2011.csv file has data related to Literacy in India according to India Census 2011.
+
+    First Column has simple serial number
+    Second column has the District name
+    Third column has State name corresponding to the district from second column.
+    Last column has the Literacy data corresponding to the district from second column.
+
+  4. bestsellers-with-categories.csv file has data on Amazon's Top 50 bestselling books from 2009 to 2019. Contains 550 books, data has been categorized into fiction and non-fiction.
