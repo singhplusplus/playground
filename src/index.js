@@ -8,15 +8,24 @@ import {
     axisLeft, axisBottom 
 } from "d3";
 
+const vizconfig = {
+    svg: {
+        height: 1000,
+        width: 1200,
+    },
+    vizarea: {
+        margin: {left: 170, top: 20, right: 20, bottom: 50}
+    },
+};
+// vizconfig.vizarea['width'] = vizconfig.svg.width - vizconfig.vizarea.margin.left - vizconfig.vizarea.margin.right;
+// console.log(vizconfig.vizarea.width());
+
 let pokemonList = [];
-const svgHeight = 1000;
-const svgWidth = 1200;
 const pokemonCsvUrl = 'https://raw.githubusercontent.com/singhplusplus/d3-playground/main/csv/Pokemon.csv';
 // const pokemonCsvUrl = 'http://localhost:3003/pokemon';
-const svg = select('svg').attr('width', svgWidth).attr('height', svgHeight);
-const margin = {left: 170, top: 20, right: 20, bottom: 50};
-const innerHeight = svgHeight - margin.top - margin.bottom;
-const innerWidth = svgWidth - margin.left - margin.right;
+const svg = select('body').append('svg').attr('width', vizconfig.svg.width).attr('height', vizconfig.svg.height);
+const innerHeight = vizconfig.svg.height - vizconfig.vizarea.margin.top - vizconfig.vizarea.margin.bottom;
+const innerWidth = vizconfig.svg.width - vizconfig.vizarea.margin.left - vizconfig.vizarea.margin.right;
 
 const fetchCSVData = async (url) => {
     // return await json(url);
@@ -43,7 +52,7 @@ const visualize = fetchedData => {
 
     // console.log('pokemonList - ', pokemonList);
     const pokemonTotal = pokemon => pokemon.Total;
-    const pokemonTotalDomain = pokemon => pokemon.Total + 80;
+    // const pokemonTotalDomain = pokemon => pokemon.Total + 80;
     const pokemonId = pokemon => pokemon.id;
     const pokemonName = pokemon => pokemon.Name;
     const pokemonHP = pokemon => pokemon.HP;
@@ -54,24 +63,26 @@ const visualize = fetchedData => {
     const pokemonSpeed = pokemon => pokemon.Speed;
 
     const xScale = scaleLinear()
-        .domain( [ 0, max(pokemonList, pokemonTotalDomain) ] )
-        .range([0, innerWidth]);
+        .domain( [ 0, max(pokemonList, pokemonTotal) ] )
+        .range([0, innerWidth])
+        .nice();
     const yScale = scaleBand()
         .domain( pokemonList.map(pokemonName) )
         .rangeRound([0, innerHeight])
-        .padding(0.1);
+        .padding(0.2);
 
-    console.log('pokemon loaded - x, y value ', pokemonList[1],
-         xScale(pokemonList[1].Total), yScale(pokemonList[1].Name), 'pokemon loaded - bar width ', yScale.bandwidth());
+    // console.log('pokemon loaded - x, y value ', pokemonList[1],
+    //      xScale(pokemonList[1].Total), yScale(pokemonList[1].Name), 'pokemon loaded - bar width ', yScale.bandwidth());
 
-    const innerGroup = svg.append('g')
-        .attr('transform', `translate(${margin.left}, ${margin.top})`);
-    innerGroup.append('g').call(axisLeft(yScale));
-    // .attr('stroke', ``);
-    innerGroup.append('g').call(axisBottom(xScale))
+    const vizArea = svg.append('g')
+        .attr('transform', `translate(${ vizconfig.vizarea.margin.left }, ${ vizconfig.vizarea.margin.top })`);
+
+    vizArea.append('g').call(axisLeft(yScale));
+
+    vizArea.append('g').call(axisBottom(xScale))
         .attr('transform', `translate(0, ${innerHeight})`);
 
-    innerGroup.selectAll('rect')
+    vizArea.selectAll('rect')
         .data(pokemonList)
         .join(
             enter => {
