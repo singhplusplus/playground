@@ -7,10 +7,11 @@ import {
     max,
     axisLeft, axisBottom 
 } from "d3";
+import "./main.scss";
 
 const vizconfig = {
     svg: {
-        height: 1000,
+        height: 800,
         width: 1200,
     },
     vizarea: {
@@ -23,7 +24,7 @@ const vizconfig = {
 let pokemonList = [];
 const pokemonCsvUrl = 'https://raw.githubusercontent.com/singhplusplus/d3-playground/main/csv/Pokemon.csv';
 // const pokemonCsvUrl = 'http://localhost:3003/pokemon';
-const svg = select('body').append('svg').attr('width', vizconfig.svg.width).attr('height', vizconfig.svg.height);
+const svg = select('svg').attr('width', vizconfig.svg.width).attr('height', vizconfig.svg.height);
 const innerHeight = vizconfig.svg.height - vizconfig.vizarea.margin.top - vizconfig.vizarea.margin.bottom;
 const innerWidth = vizconfig.svg.width - vizconfig.vizarea.margin.left - vizconfig.vizarea.margin.right;
 
