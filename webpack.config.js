@@ -16,6 +16,13 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ] //  order is important, last in array execute first
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+        }
       }
     ]
   }

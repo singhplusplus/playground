@@ -1,8 +1,12 @@
-export const visualize = (vizFunc, vizAttr) => {
-  // console.log("fetchedData", fetchedData);
-  // console.log("vizFunc", vizFunc);
-  // console.log("this", this);
-  return vizFunc.bind(this, vizAttr);
-  // console.log("vizAttr", vizAttr);
-  // vizFunc.call(fetchedData, vizAttr);
-};
+import { fetchCSVData, fetchJSONData } from "./fetch-data";
+import { printError } from "./print-error";
+
+import { visualizePokemon, pokemonFetchURL } from "./../components/pokemon-linear-viz";
+
+export function vizPokemon(vizAttr) {
+  fetchCSVData(pokemonFetchURL()).then(
+      fetchedData => {
+          visualizePokemon(fetchedData, vizAttr)
+      }
+  ).catch(printError);
+}

@@ -1,11 +1,8 @@
 // import * as d3 from "d3";
-import { fetchCSVData, fetchJSONData } from "./commons/fetch-data";
-import { printError } from "./commons/print-error";
-// import { visualize } from "./commons/visualize";
-
-import { visualizePokemon, pokemonFetchURL } from "./components/pokemon-linear-viz";
+import { vizPokemon } from "./commons/visualize";
 
 import "./main.scss";
+import img from "./favicon.ico";
 
 const svg = {
     height: 800,
@@ -25,13 +22,4 @@ const vizAttr = {
     originConfig: origin
 }
 
-// TODO : use visualize from visualize.js - hint .bind would be required
-const visualize = (fetchedData) => {
-    visualizePokemon(fetchedData, vizAttr);
-};
-
-fetchCSVData(pokemonFetchURL()).then(
-    visualize
-).catch(printError);
-// fetchJSONData(pokemonFetchURL()).then(visualize).catch(printError);
-// visualize.bind(this, {visualizePokemon, vizAttr})
+vizPokemon(vizAttr);

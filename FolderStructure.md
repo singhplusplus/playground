@@ -1,8 +1,15 @@
 # Folder structure for react app
-index
-  components
-    portfolio
-      pokemon
-  commons
-    services
-
+index.html
+index.js
+src
+  app
+    components
+      portfolio
+        pokemon
+    shared
+      services
+  shared
+    buttons
+    nav header
+    footer
+    
