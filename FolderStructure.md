@@ -2,14 +2,17 @@
 * index.html
 * index.js
 * src
-  * app
-    * components
-      * portfolio
-        * pokemon
-    * shared
-      * services
-  * shared
-    * buttons
-    * nav header
-    * footer
+  * assets
+  * container
+    * app
+      * landpage
+      * prtfoliopage
+        * common
+        * components
+          * prtfoliocard
+          * prtfoliodetail
+      * shared
+        * buttons
+        * navheader
+        * footer
     
