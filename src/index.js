@@ -1,5 +1,9 @@
-// import * as d3 from "d3";
 import "./main.scss";
 import img from "./favicon.ico";
 
-console.log("hello");
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Container from './container/container'
+const elem = <h1>Hi</h1>
+
+ReactDOM.render(<Container />, document.getElementById('container'));
