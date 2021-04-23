@@ -3,7 +3,12 @@ import img from "./favicon.ico";
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Container from './container/container'
-const elem = <h1>Hi</h1>
+import Container from './container/comp-container'
+// const elem = <h1>Hi</h1>
 
-ReactDOM.render(<Container />, document.getElementById('container'));
+ReactDOM.render(
+  <React.StrictMode>
+    <Container />
+  </React.StrictMode>,
+  document.getElementById('container')
+);
