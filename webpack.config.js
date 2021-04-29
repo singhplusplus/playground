@@ -20,10 +20,11 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/i,
         use: [
           'style-loader',
           'css-loader',
+          'postcss-loader',
           'sass-loader'
         ] //  order is important, last in array execute first
       },

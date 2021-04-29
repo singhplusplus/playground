@@ -1,4 +1,4 @@
-import "./main.scss";
+import "./main.scss"
 import img from "./favicon.ico";
 
 import React from 'react';
