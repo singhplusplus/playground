@@ -8,9 +8,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     colors: Object.assign(colors, {
-      primary: colors.fuchsia,
-      secondary: colors.pink,
-      lessprior: colors.warmGray
+      primary: colors.indigo,
+      secondary: colors.rose,
+      neutral: colors.warmGray
     }),
     extend: {},
   },
