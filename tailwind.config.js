@@ -2,14 +2,14 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: {
-    enabled: true,
+    enabled: false,
     content: ['./src/**/*.html', './src/**/*.js']
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
     colors: Object.assign(colors, {
       primary: colors.indigo,
-      secondary: colors.rose,
+      secondary: colors.pink,
       neutral: colors.warmGray
     }),
     extend: {},

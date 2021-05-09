@@ -1,29 +1,196 @@
-export const BASE_COLORS = {
+export const COLORS_SPECIAL = Object.freeze({
+  current: "current",
+  transparent: "transparent",
+  black: "black",
+  white: "white"
+});
+
+export const COLOR_SHADES = Object.freeze({
+  50: "50",
+  100: "100",
+  200: "200",
+  300: "300",
+  400: "400",
+  500: "500",
+  600: "600",
+  700: "700",
+  800: "800",
+  900: "900"
+});
+
+export const COLORS_BASIC = Object.freeze(Object.assign({
   primary: "primary",
   secondary: "secondary",
   neutral: "neutral"
-};
+}, COLORS_SPECIAL));
 
-export const BTN_SIZES = {
-  xl: "xl",
-  lg: "lg",
-  md: "md",
-  sm: "sm",
-  xs: "xs"
-};
+export const ROUNDED = Object.freeze({
+  none: "rounded-none",
+  sm: "rounded-sm",
+  default: "rounded",
+  md: "rounded-md",
+  lg: "rounded-lg",
+  xl: "rounded-xl",
+  "2xl": "rounded-2xl",
+  full: "rounded-full"
+});
 
-let btnFill = Object.assign(BASE_COLORS, {nofill: "nofill"});
-export const BTN_FILL = Object.freeze(btnFill);
+export const SHADOW = Object.freeze({
+  none: "shadow-none",
+  sm: "shadow-sm",
+  default: "shadow",
+  md: "shadow-md",
+  lg: "shadow-lg",
+  xl: "shadow-xl",
+  "2xl": "shadow-2xl"
+});
 
-export const BTN_DEFAULT_CONFIG = {
-  // rounded / size / background color / text color / filled - outlined
-  rounded: false,
-  size: BTN_SIZES.md,
-  fill: BTN_FILL.nofill,
-  color: BASE_COLORS.primary,
-  outline: true
-}
-
-export const BTNGROUP_CONFIG = {
-
-}
+// export const PADDING = Object.freeze({
+//   xy: {
+//     0: "p-0",
+//     1: "p-1",
+//     2: "p-2",
+//     3: "p-3",
+//     4: "p-4",
+//     5: "p-5",
+//     6: "p-6",
+//     8: "p-8",
+//     10: "p-10",
+//     12: "p-12",
+//     14: "p-14",
+//     16: "p-16",
+//     24: "p-24",
+//     32: "p-32",
+//     40: "p-40",
+//     48: "p-48",
+//     60: "p-60",
+//     80: "p-80",
+//     px: "p-px"
+//   },
+//   x: {
+//     0: "px-0",
+//     1: "px-1",
+//     2: "px-2",
+//     3: "px-3",
+//     4: "px-4",
+//     5: "px-5",
+//     6: "px-6",
+//     8: "px-8",
+//     10: "px-10",
+//     12: "px-12",
+//     14: "px-14",
+//     16: "px-16",
+//     24: "px-24",
+//     32: "px-32",
+//     40: "px-40",
+//     48: "px-48",
+//     60: "px-60",
+//     80: "px-80",
+//     px: "px-px"
+//   },
+//   y: {
+//     0: "py-0",
+//     1: "py-1",
+//     2: "py-2",
+//     3: "py-3",
+//     4: "py-4",
+//     5: "py-5",
+//     6: "py-6",
+//     8: "py-8",
+//     10: "py-10",
+//     12: "py-12",
+//     14: "py-14",
+//     16: "py-16",
+//     24: "py-24",
+//     32: "py-32",
+//     40: "py-40",
+//     48: "py-48",
+//     60: "py-60",
+//     80: "py-80",
+//     px: "py-px"
+//   },
+//   t: {
+//     0: "pt-0",
+//     1: "pt-1",
+//     2: "pt-2",
+//     3: "pt-3",
+//     4: "pt-4",
+//     5: "pt-5",
+//     6: "pt-6",
+//     8: "pt-8",
+//     10: "pt-10",
+//     12: "pt-12",
+//     14: "pt-14",
+//     16: "pt-16",
+//     24: "pt-24",
+//     32: "pt-32",
+//     40: "pt-40",
+//     48: "pt-48",
+//     60: "pt-60",
+//     80: "pt-80",
+//     px: "pt-px"
+//   },
+//   r: {
+//     0: "pr-0",
+//     1: "pr-1",
+//     2: "pr-2",
+//     3: "pr-3",
+//     4: "pr-4",
+//     5: "pr-5",
+//     6: "pr-6",
+//     8: "pr-8",
+//     10: "pr-10",
+//     12: "pr-12",
+//     14: "pr-14",
+//     16: "pr-16",
+//     24: "pr-24",
+//     32: "pr-32",
+//     40: "pr-40",
+//     48: "pr-48",
+//     60: "pr-60",
+//     80: "pr-80",
+//     px: "pr-px"
+//   },
+//   b: {
+//     0: "pb-0",
+//     1: "pb-1",
+//     2: "pb-2",
+//     3: "pb-3",
+//     4: "pb-4",
+//     5: "pb-5",
+//     6: "pb-6",
+//     8: "pb-8",
+//     10: "pb-10",
+//     12: "pb-12",
+//     14: "pb-14",
+//     16: "pb-16",
+//     24: "pb-24",
+//     32: "pb-32",
+//     40: "pb-40",
+//     48: "pb-48",
+//     60: "pb-60",
+//     80: "pb-80",
+//     px: "pb-px"
+//   },
+//   l: {
+//     0: "pl-0",
+//     1: "pl-1",
+//     2: "pl-2",
+//     3: "pl-3",
+//     4: "pl-4",
+//     5: "pl-5",
+//     6: "pl-6",
+//     8: "pl-8",
+//     10: "pl-10",
+//     12: "pl-12",
+//     14: "pl-14",
+//     16: "pl-16",
+//     24: "pl-24",
+//     32: "pl-32",
+//     40: "pl-40",
+//     48: "pl-48",
+//     60: "pl-60",
+//     80: "pl-80",
+//     px: "pl-px"
+//   }
+// });

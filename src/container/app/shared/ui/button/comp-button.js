@@ -1,18 +1,14 @@
 import React from 'react';
-import { BTN_DEFAULT_CONFIG, BTN_FILL } from '../const-ui';
+import { COLORS_BASIC, ROUNDED, SHADOW } from './../const-ui';
+import { configureButton, BTN_SIZES, BTN_TYPES } from './const-button';
 
 
 // TODO: add handling for which button is currently active
 function createButtonGroup(props) {
   const radioGrp = [];
-
-  console.log("BTN_FILL", BTN_FILL);
-  // BTN_FILL.primary = "NEW COLOR";
-  console.log("BTN FILL UPDATED", BTN_FILL);
-  // console.log(props)
   props.btns.forEach((btn, i) => {
     radioGrp.push(
-      <Button key={i} config={BTN_DEFAULT_CONFIG}>
+      <Button key={i} type={BTN_TYPES.solid}>
         {btn}
       </Button>
     );
@@ -24,23 +20,21 @@ function createButtonGroup(props) {
   );
 }
 
-/* // TODO: add button type configurations -
-   rounded / size / background color / text color / filled - outlined */
-function createButton({children, config}) {
-  config = config || BTN_DEFAULT_CONFIG;
-  console.log(config)
+function createButton({children, color, type, size, rounded, className, shadow, shade}) {
+  type = type || BTN_TYPES.outline;
+  color = color || COLORS_BASIC.primary;
+  size = size || BTN_SIZES.md;
+  rounded = rounded || ROUNDED.md;
+  shadow = shadow || SHADOW.none;
+  shade = +shade || 500;
+  // shade = (shade === 50) ? 100: shade;
+  const propClasses = className || "";
+  const buttonClasses = configureButton(type, color, shade, size, rounded, shadow);
   return (
-    <button className="hover:bg-primary-700 focus:bg-primary-800 focus:outline-none p-1 px-2 border-white bg-primary-500 text-white">
+    <button className={buttonClasses + " " + propClasses}>
       {children}
     </button>
   );
-}
-
-const COLORS = "";
-
-export const DEFAULT_BUTTON_CONFIG = {
-  rounded: false,
-  size: ""
 }
 
 export const ButtonGroup = createButtonGroup;
