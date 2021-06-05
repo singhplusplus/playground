@@ -10,20 +10,10 @@ const btnSizeClassMap = {
   xl: BTN_XL
 }
 
-//   rounded / size / background color / text color / filled - outlined
-//   rounded: ROUNDED.roundedsm,
-//   size: BTN_SIZES.md,
-//   fill: {
-//     normal: COLORS_BASIC.current,
-//     active: COLORS_BASIC.${color}
-//   },
-//   color: COLORS_BASIC.${color},
-//   outline: true,
-//   padding: [PADDING.x[2], PADDING.y[1]]
-
-export const BTN_TYPES = Object.freeze({
+export const BTN_STYLES = Object.freeze({
   solid: "SOLID",
-  outline: "OUTLINE"
+  outline: "OUTLINE",
+  none: "NONE"
 });
 
 export const BTN_SIZES = Object.freeze({
@@ -32,25 +22,24 @@ export const BTN_SIZES = Object.freeze({
   lg: "lg",
   xl: "xl"
 });
-  
-export const configureButton = (type, color, shade, size, rounded, shadow) => {
-  let configuredClasses = "";
+
+export const configureButton = (style, color, shade, size, rounded, shadow) => {
+  let bgColor = "";
+  let textColor = "";
+  let border = "";
 
   const commonClasses = `${btnSizeClassMap[size]} ${rounded} ${shadow} focus:outline-none`;
-  const hoverShade = (shade <= 700) ? shade + 100 : 800;
-  const focusShade = (shade <= 700) ? shade + 200 : 900;
-  if(BTN_TYPES.solid === type) {
-    const bgColor = `bg-${color}-${shade} hover:bg-${color}-${hoverShade} focus:bg-${color}-${focusShade}`;
-    const textColor = `text-white`;
-
-    configuredClasses = `${commonClasses} ${bgColor} ${textColor}`;
+  if(BTN_STYLES.solid === style) {
+    bgColor = " bg-primary-500 hover:bg-primary-600 focus:bg-primary-700";
+    textColor = " text-white";
   }
-  else if(BTN_TYPES.outline === type) {
-    const bgColor = `bg-transparent hover:bg-${color}-${hoverShade} focus:bg-${color}-${focusShade}`;
-    const textColor = `text-${color}-${shade} hover:text-white focus:text-white`;
-    const border = `border border-${color}-${shade}`;
-
-    configuredClasses = `${commonClasses} ${bgColor} ${textColor} ${border}`;
+  else if(BTN_STYLES.outline === style) {
+    bgColor = " bg-transparent hover:bg-primary-600 focus:bg-primary-700";
+    textColor = " text-primary-500 hover:text-white focus:text-white";
+    border = " border border-primary-500";
   }
-  return configuredClasses;
+  else if(BTN_STYLES.none === style) {
+    textColor = " text-primary-500 hover:text-primary-600 focus:text-primary-700";
+  }
+  return `${commonClasses}${bgColor}${textColor}${border}`;
 }

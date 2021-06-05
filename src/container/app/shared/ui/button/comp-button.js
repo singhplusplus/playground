@@ -1,6 +1,6 @@
 import React from 'react';
-import { COLORS_BASIC, ROUNDED, SHADOW } from './../const-ui';
-import { configureButton, BTN_SIZES, BTN_TYPES } from './const-button';
+import { ROUNDED, SHADOW } from './../const-ui';
+import { configureButton, BTN_SIZES, BTN_STYLES } from './const-button';
 
 
 // TODO: add handling for which button is currently active
@@ -8,7 +8,7 @@ function createButtonGroup(props) {
   const radioGrp = [];
   props.btns.forEach((btn, i) => {
     radioGrp.push(
-      <Button key={i} type={BTN_TYPES.solid}>
+      <Button key={i} style={BTN_STYLES.solid}>
         {btn}
       </Button>
     );
@@ -20,18 +20,11 @@ function createButtonGroup(props) {
   );
 }
 
-function createButton({children, color, type, size, rounded, className, shadow, shade}) {
-  type = type || BTN_TYPES.outline;
-  color = color || COLORS_BASIC.primary;
-  size = size || BTN_SIZES.md;
-  rounded = rounded || ROUNDED.md;
-  shadow = shadow || SHADOW.none;
-  shade = +shade || 500;
-  // shade = (shade === 50) ? 100: shade;
-  const propClasses = className || "";
-  const buttonClasses = configureButton(type, color, shade, size, rounded, shadow);
+// TODO: Need to configure color in a better way, also light - dark theme
+function createButton({children, color="primary", style=BTN_STYLES.outline, size=BTN_SIZES.md, rounded=ROUNDED.md, className="", shadow=SHADOW.none, shade=500, onClick, type="button"}) {
+  const buttonClasses = configureButton(style, color, +shade, size, rounded, shadow);
   return (
-    <button className={buttonClasses + " " + propClasses}>
+    <button type={type} className={`${buttonClasses} ${className}`} onClick={onClick}>
       {children}
     </button>
   );

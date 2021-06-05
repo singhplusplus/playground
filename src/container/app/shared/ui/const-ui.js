@@ -5,19 +5,6 @@ export const COLORS_SPECIAL = Object.freeze({
   white: "white"
 });
 
-export const COLOR_SHADES = Object.freeze({
-  50: "50",
-  100: "100",
-  200: "200",
-  300: "300",
-  400: "400",
-  500: "500",
-  600: "600",
-  700: "700",
-  800: "800",
-  900: "900"
-});
-
 export const COLORS_BASIC = Object.freeze(Object.assign({
   primary: "primary",
   secondary: "secondary",
