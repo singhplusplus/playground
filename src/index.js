@@ -4,7 +4,7 @@ import img from "./favicon.ico";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Container from './container/comp-container'
-// const elem = <h1>Hi</h1>
+// const elem = <h1>Hello world</h1>
 
 ReactDOM.render(
   <React.StrictMode>
